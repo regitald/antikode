@@ -16,13 +16,13 @@ LEFT JOIN (
         outlets.address,
         outlets.longitude,
         outlets.latitude,
-				(6371 * acos( cos( radians(-6.175387) ) * cos( radians(latitude) ) * cos( radians(longitude) - radians(106.8226681)) + sin(radians(-6.175387)) * sin( radians(latitude)))) AS distance
+		(6371 * acos( cos( radians(-6.175387) ) * cos( radians(latitude) ) * cos( radians(longitude) - radians(106.8226681)) + sin(radians(-6.175387)) * sin( radians(latitude)))) AS distance
     FROM outlets
 ) AS outlets_data on brands.id=outlets_data.brand_id
 LEFT JOIN (
     SELECT
-				products.brand_id,
-				count(products.id) as total_products
+		products.brand_id,
+		count(products.id) as total_products
     FROM products
 ) AS products_data on brands.id=products_data.brand_id
 ORDER BY distance;
