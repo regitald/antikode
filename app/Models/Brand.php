@@ -22,7 +22,7 @@ class Brand extends Model
 
     public function outlets()
     {
-        return $this->hasMany('App\Models\Outlet','brand_iid','id');
+        return $this->hasMany('App\Models\Outlet','brand_id','id');
     }
 
     public function products(){
